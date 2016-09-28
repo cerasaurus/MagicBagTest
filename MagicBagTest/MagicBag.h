@@ -41,16 +41,23 @@ public:
 	}
 
 	MagicBag(const MagicBag& other) {
-		//ListNode<T> *current = other.head;
-		//while (current)
-		//{
-		//	insert(current->value);
-		//	current = current->next;
-		//}
-		//return *this;
+		ListNode<T> *current = other.head;
+		while (current)
+		{
+			insert(current->value);
+			current = current->next;
+		}
 	}
 
 	MagicBag& operator=(const MagicBag& other) {
+		ListNode<T> *newNode = head;
+		ListNode<T> *next;
+		while(newNode != nullptr)
+		{
+			next = newNode->next;
+			delete newNode;
+			newNode = next;
+		}
 		ListNode<T> *current = other.head;
 		while (current)
 		{
@@ -75,10 +82,22 @@ public:
 
 	void insert(T item) {
 		ListNode<T> *newNode;
+		ListNode<T> *current;
 		newNode = new ListNode<T>(item);
-		newNode->next = head;
-		head = newNode;
+		if (head == nullptr) {
+			head = newNode;
+		}
+		else {
+			current = head;
+				while (current->next != nullptr)
+				{
+					current = current->next;
+				}
+			current->next = newNode;
+			newNode->next = nullptr;
+		}
 	}
+
 
 	T draw() {
 		if (!head)

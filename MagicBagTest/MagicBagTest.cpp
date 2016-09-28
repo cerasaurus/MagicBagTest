@@ -17,10 +17,10 @@ int main() {
 	mb1.insert(2);
 	mb1.insert(3);
 
+	cout << "Printing out Magic Bag 1" << endl;
 	mb1.print(cout);
 
-	//cout << mb1 << endl << endl;
-
+	//set copy of mb1 as mb2
 	MagicBag<int> mb2(mb1);
 
 	cout << "The number of ones in the bag is " << mb1.peek(1) << endl;
@@ -36,7 +36,9 @@ int main() {
 	cout << "The number of three in the bag is " << mb1.peek(3) << endl;
 	cout << endl;
 
+	cout << "Printing out Magic Bag 1" << endl;
 	mb1.print(cout);
+	cout << "\n Printing out Magic Bag 2" << endl;
 	mb2.print(cout);
 	
 	//cout << mb1 << endl;
@@ -51,12 +53,13 @@ int main() {
 	for (int i = 0; i < 50; i++) {
 		mb3.insert(i + 1);
 	}
+	cout << "\nPrinting Magic Bag 2" << endl;
 	mb2.print(cout);
-	//cout << mb3 << endl << endl;
 
 	mb3 = mb2 = mb1;
+	cout << "Printing out Magic Bag 2 after = overloads" << endl;
 	mb2.print(cout);
-	//cout << mb3 << endl << endl;
+
 
 	system("pause");
 	return 0;
